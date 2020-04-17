@@ -33,7 +33,6 @@ export class App extends React.Component<IAppProps> {
     console.log("button text color change called");
 
     let { changeButtonColor, buttonColor } = this.props;
-    changeButtonColor("blue");
 
     if (buttonColor == "orange") {
       changeButtonColor("blue");
@@ -61,7 +60,10 @@ export class App extends React.Component<IAppProps> {
               {/*
               * Please do not use in-line styles :)
               */}
-              <button onClick={() => this.buttonTextColorChange()} style={{ color: buttonColor }}>This Buttons Text Color Will Change!</button>
+              <button
+                onClick={() => this.buttonTextColorChange()}
+                style={{ color: buttonColor }}>This Buttons Text Color Will Change!
+              </button>
             </Grid.Row>
             <Grid.Row centered>
               <h3>{`Current Count Value: ${countedNumber}`}</h3>

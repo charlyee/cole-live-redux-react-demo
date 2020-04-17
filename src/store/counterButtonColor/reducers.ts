@@ -19,18 +19,16 @@ const initialState: CounterAndButtonState = {
 }
 
 export function counterAndButtonReducer(state = initialState, action: CounterButtonActionTypes): CounterAndButtonState {
-    console.log("reducer called");
-    console.log(action);
     switch (action.type) {
         case DECREMENT_COUNTER_VALUE:
             return {
                 ...state,
-                countedNumber: state.countedNumber--
+                countedNumber: --state.countedNumber
             }
         case INCREMENT_COUNTER_VALUE:
             return {
                 ...state,
-                countedNumber: state.countedNumber++
+                countedNumber: ++state.countedNumber
             }
         case CHANGE_BUTTON_COLOR:
             return {
