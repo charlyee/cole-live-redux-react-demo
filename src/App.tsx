@@ -5,6 +5,7 @@ import { RootState } from './store';
 
 import { incrementCounterValue, decrementCounterValue, changeButtonColor } from './store/counterButtonColor/actions';
 import { connect } from 'react-redux';
+import BottomSection from './store/components/BottomSection';
 
 export interface IAppProps {
   changeButtonColor: typeof changeButtonColor;
@@ -80,6 +81,9 @@ export class App extends React.Component<IAppProps> {
               onClick={() => this.decrementValueButtonClicked()}
               color="linkedin"
             />
+          </Grid.Row>
+          <Grid.Row centered>
+            <BottomSection />
           </Grid.Row>
         </Grid>
 

@@ -1,4 +1,4 @@
-import { CounterAndButtonState, CounterButtonActionTypes, DECREMENT_COUNTER_VALUE, INCREMENT_COUNTER_VALUE, CHANGE_BUTTON_COLOR } from "./types";
+import { CounterAndButtonState, CounterButtonActionTypes, DECREMENT_COUNTER_VALUE, INCREMENT_COUNTER_VALUE, CHANGE_BUTTON_COLOR, CHANGE_COUNTER_VALUE } from "./types";
 
 /**
  * Expected Data Structure:
@@ -34,6 +34,11 @@ export function counterAndButtonReducer(state = initialState, action: CounterBut
             return {
                 ...state,
                 buttonColor: action.payload
+            }
+        case CHANGE_COUNTER_VALUE:
+            return {
+                ...state,
+                countedNumber: action.payload
             }
         default:
             return state;
