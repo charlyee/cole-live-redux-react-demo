@@ -18,14 +18,32 @@ export class App extends React.Component<IAppProps> {
   private incrementValueButtonClicked(): void {
     console.log("increment called");
     //this.props.actionCreatorForButtonIncrementValue
+
+    let { incrementCounterValue } = this.props;
+    incrementCounterValue();
   }
 
   private decrementValueButtonClicked(): void {
     console.log("decrement called");
+    let { decrementCounterValue } = this.props;
+    decrementCounterValue();
   }
 
   private buttonTextColorChange(): void {
     console.log("button text color change called");
+
+    let { changeButtonColor, buttonColor } = this.props;
+    changeButtonColor("blue");
+
+    if (buttonColor == "orange") {
+      changeButtonColor("blue");
+    } else if (buttonColor == "blue") {
+      changeButtonColor("red");
+    } else if (buttonColor == "red") {
+      changeButtonColor("green");
+    } else {
+      changeButtonColor("orange");
+    }
   }
 
   public render() {
@@ -40,13 +58,13 @@ export class App extends React.Component<IAppProps> {
           </Grid.Row>
           <Grid.Row centered>
             <Grid.Row centered>
-              <Button
-                content="This Buttons Text Color Will Change!"
-                onClick={() => this.buttonTextColorChange()}
-              />
+              {/*
+              * Please do not use in-line styles :)
+              */}
+              <button onClick={() => this.buttonTextColorChange()} style={{ color: buttonColor }}>This Buttons Text Color Will Change!</button>
             </Grid.Row>
             <Grid.Row centered>
-              <h3>Current Count Value: 0</h3>
+              <h3>{`Current Count Value: ${countedNumber}`}</h3>
             </Grid.Row>
           </Grid.Row>
           <Grid.Row centered>

@@ -14,11 +14,13 @@ import { CounterAndButtonState, CounterButtonActionTypes, DECREMENT_COUNTER_VALU
  */
 
 const initialState: CounterAndButtonState = {
-    countedNumber: 0,
-    buttonColor: "facebook"
+    countedNumber: 1337,
+    buttonColor: "red"
 }
 
 export function counterAndButtonReducer(state = initialState, action: CounterButtonActionTypes): CounterAndButtonState {
+    console.log("reducer called");
+    console.log(action);
     switch (action.type) {
         case DECREMENT_COUNTER_VALUE:
             return {
