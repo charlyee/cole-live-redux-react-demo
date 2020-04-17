@@ -1,11 +1,20 @@
 import * as React from 'react';
 import { Fragment } from 'react';
 import { Grid, Button } from 'semantic-ui-react';
+import { RootState } from './store';
+
+import { incrementCounterValue, decrementCounterValue, changeButtonColor } from './store/counterButtonColor/actions';
+import { connect } from 'react-redux';
 
 export interface IAppProps {
+  changeButtonColor: typeof changeButtonColor;
+  decrementCounterValue: typeof decrementCounterValue;
+  incrementCounterValue: typeof incrementCounterValue;
+  countedNumber: number;
+  buttonColor: string;
 }
 
-export default class App extends React.Component<IAppProps> {
+export class App extends React.Component<IAppProps> {
   private incrementValueButtonClicked(): void {
     console.log("increment called");
     //this.props.actionCreatorForButtonIncrementValue
@@ -20,6 +29,8 @@ export default class App extends React.Component<IAppProps> {
   }
 
   public render() {
+    let { countedNumber, buttonColor } = this.props;
+
     //Change color of a button using redux.
     return (
       <Fragment>
@@ -56,3 +67,15 @@ export default class App extends React.Component<IAppProps> {
     );
   }
 }
+
+const mapStateToProps = (state: RootState) => {
+  return {
+    countedNumber: state.counterButton.countedNumber,
+    buttonColor: state.counterButton.buttonColor
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { changeButtonColor, decrementCounterValue, incrementCounterValue }
+)(App);
